@@ -1,0 +1,23 @@
+---
+title: Creating a Town
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Creating your own town in Towny is a straightforward process. Follow these steps to establish your town and start building your community:
+
+<Steps>
+1. To create your town (which also sets the homeblock at the same spot), stand at the desired location and type `/t new [Town Name]`. Spaces in the name will be replaced with underscores upon submission.
+
+    :::note[Cost of Creating a Town]
+    You should have at least `$2 500` in-game money for establishing the town, plus an additional `$5 000` to `$10 000` for claiming land and covering initial upkeep costs. Failure to afford the costs will lead to your town being bankrupt, and after a certain period of time, the town will be accessible to everyone!
+    :::
+
+2. After creating your town, ensure its financial stability by depositing funds. We recommend starting with `$7 500` to `$10 000`. This is crucial as daily upkeep costs are proportional to the number of town members. Upkeep fees are deducted daily at a specified time, visible with `/towny time`. Town funds are also used for purchasing bonus claim blocks and expanding land.
+
+3. Land is claimed per chunk. To view the chunk boundaries, press `F3` +  `G`. You start with one claimed chunk (which is called your homeblock). To claim additional chunks, stand in an adjacent unclaimed chunk and type `/t claim` (each claim costs `$250`). You can expand your town size by joining a nation or purchasing bonus townblocks by typing `/t buy bonus [Amount]` (each bonus claim costs `$500`).
+
+4. You can impose taxes on residents to cover town expenses. Choose between a fixed daily fee for all residents by typing `/t set taxes [Amount]` or a percentage of each resident's balance, up to `25%` or `$100,000`, whichever is lower, toggled with `/t toggle taxpercent`. Taxes are collected alongside daily upkeep. Noble residents and town staff members are exempt from taxes, which may affect resident recruitment.
+
+5. To claim land not directly connected to your town, you create an outpost. This costs `$15,000`. Stand in the desired chunk and type `/t claim outpost` to establish the outpost plot. Once claimed, you can continue expanding around it with `/t claim`. Additionally, your town's base upkeep will be increased by `$25` per outpost.
+</Steps>

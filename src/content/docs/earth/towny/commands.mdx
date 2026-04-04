@@ -1,0 +1,325 @@
+---
+title: Commands
+---
+
+### /towny
+
+| Command | Description |
+|---------|-------------|
+| `/towny` | Shows basic Towny commands. |
+| `/towny ?` | Shows more Towny commands. |
+| `/towny allowedblocks` | Opens a menu where you can check what blocks might be allowed to be built/destroyed. |
+| `/towny itemuse` | Shows the items in the item_use_ids list. |
+| `/towny map` | Shows the Towny map. |
+| `/towny hud` | Activates the map in the player's scoreboard. |
+| `/towny plotclearblocks` | Shows the blocks deleted using /plot clear. |
+| `/towny prices` | Shows taxes/costs associated with running a town. |
+| `/towny switches` | Shows the blocks in the switch_ids list. |
+| `/towny time` | Shows time until next new-day (tax/upkeep collection.) |
+| `/towny top residents {all/town/nation}` | Shows top residents. |
+| `/towny top land {all/resident/town}` | Shows top land owners. |
+| `/towny universe` | Shows full Towny stats, resident/town/nation/world counts, and townblocks claimed. |
+| `/towny wildsblocks` | Shows the blocks that are usable in wilds plots and which are allowed to be farmed in the wilderness. |
+
+### /plot
+
+| Command | Description |
+|---------|-------------|
+| `/plot` | Shows the /plot commands. |
+| `/plot claim` | Resident command to personally claim a plot that is for sale. |
+| `/plot auto` | Resident command to personally claim an area of plots that are for sale, around the player typing the command. |
+| `/plot unclaim` | Resident command to unclaim personally owned plots. |
+| `/plot unclaim circle/rect {# (radius around current position)}` | Resident command to unclaim personally owned plots in a circle or rectangle shape. |
+| `/plot forsale/fs {$}` | Set a plot for sale. |
+| `/plot forsale/fs circle/rect {# (radius around current position)} {$}` | Set a shape of plots for sale. |
+| `/plot notforsale/nfs` | Set a plot to not be for sale. |
+| `/plot notforsale/nfs circle/rect {# (radius around current position)}` | Set a shape of plots to not be for sale. |
+| `/plot district create|new [name]` | Creates a new district, with the given name. |
+| `/plot district add {name}` | Adds a townblock to the given district. |
+| `/plot district rename [name]` | Changes the name of a district. |
+| `/plot district remove` | Remove the townblock you are stood in from a district. |
+| `/plot district delete` | Deletes the district you are stood in. |
+| `/plot evict` | Used to remove a plot from a plot owner. |
+| `/plot forsale` | Evicts the plot owner and puts the plot up for sale immediately. |
+| `/plot trust add {name}` | Adds a player as Trusted on the plot. |
+| `/plot trust remove {name}` | Removes a player from being Trusted on the plot. |
+| `/plot perm` | Shows the perm line of the plot in which the player stands. |
+| `/plot perm gui` | Opens the GUI to configure the plot perm override. |
+| `/plot perm add {name}` | Adds a player to the plot perm override. |
+| `/plot perm remove {name}` | Removes a player from the plot perm override. |
+| `/plot perm hud` | Toggles on/off the plot perm hud scoreboard. |
+| `/plot set reset` | Sets a shop/embassy/arena/wilds plot back to a normal plot. |
+| `/plot set shop` | Sets a plot to a shop plot. |
+| `/plot set embassy` | Sets a plot to an embassy plot. |
+| `/plot set arena` | Sets a plot to an arena plot. |
+| `/plot set wilds` | Sets a plot to a wilds plot. |
+| `/plot set inn` | Set a plot to an inn plot. |
+| `/plot set jail` | Set a plot to an jail plot. |
+| `/plot set farm` | Set a plot to a farm plot. |
+| `/plot set bank` | Set a plot to a bank plot. |
+| `/plot set outpost` | Set a plot to an outpost plot. |
+| `/plot set outpost spawn` | Sets the spawn point inside of an existing outpost plot. |
+| `/plot set name` | Allows a mayor or plot-owner to rename plots they own. |
+| `/plot set perm {on/off} {resident/ally/outsider} {build/destroy/switch/itemuse} {on/off}` | Edits the perm line of the plot. |
+| `/plot set reset` | Resets the plot to the default perm line. |
+| `/plot set minjoindays {#/clear}` | Sets/removes the minimum join days requirement. |
+| `/plot set maxjoindays {#/clear}` | Sets/removes the maximum join days requirement. |
+| `/plot toggle fire` | Turn on/off firespread in the plot. |
+| `/plot toggle pvp` | Turn on/off pvp in the plot. |
+| `/plot toggle explosion` | Turn on/off explosions in the plot. |
+| `/plot toggle mob` | Turn on/off hostile mob spawning in the plot. |
+| `/plot toggle taxed` | Turn on/off plot taxes. |
+| `/plot clear` | Removes list of block IDs from a plot. |
+| `/plot group add|new|create {groupname}` | Creates/adds plots to a plot group. |
+| `/plot group remove` | Removes the plot stood in from its plot group. |
+| `/plot group delete` | Deletes a plot group. |
+| `/plot group rename {newname}` | Renames a plot group. |
+| `/plot group set {plottype}` | Sets the group to a specified plot type. |
+| `/plot group set perm ...` | Sets the perm line of the group. |
+| `/plot group toggle ...` | Toggles plot settings for the group. |
+| `/plot group forsale|fs [price]` | Set the group for sale. |
+| `/plot group notforsale|nfs` | Set the group not for sale. |
+| `/plot group trust add {name}` | Adds a player as Trusted on the plot group. |
+| `/plot group remove {name}` | Removes a player from being Trusted on the plot group. |
+| `/plot group permgui` | Opens the GUI to edit the plot perm override for the group. |
+| `/plot group perm add {name}` | Adds a player to the plot perm override for the group. |
+| `/plot group perm remove {name}` | Removes a player from the plot perm override for the group. |
+| `/plot jailcell add` | Adds a jail cell to a jail plot. |
+| `/plot jailcell remove` | Removes a jail cell from a jail plot. |
+
+### /resident
+
+| Command | Description |
+|---------|-------------|
+| `/resident` | Shows a player their resident screen. |
+| `/resident ?` | Shows /res commands available. |
+| `/resident {resident}` | Shows another player's resident screen. |
+| `/resident friendadd {resident} .. {resident}` | Adds online players to your friends list. |
+| `/resident add+ {resident} .. {resident}` | Adds offline players to your friends list. |
+| `/resident remove {resident} .. {resident}` | Removes online players from your friends list. |
+| `/resident remove+ {resident} .. {resident}` | Removes offline players from your friends list. |
+| `/resident clearlist` | Removes all friends from your friend list. |
+| `/resident list` | Returns a list of your friends. |
+| `/resident list` | Lists online residents. |
+| `/resident jail paybail` | Pays to get out of jail. |
+| `/resident outlawlist {playername}` | Displays outlaw towns for a resident. |
+| `/resident plotlist {#}` | Shows your list of plots. |
+| `/resident [name] {#}` | Shows a list of plots for the given player. |
+| `/resident spawn` | Teleports to your bed if available, otherwise town spawn. |
+| `/resident togglepvp` | Toggles PVP status for your plots. |
+| `/resident fire` | Toggles fire status for your plots. |
+| `/resident explosion` | Toggles explosion status for your plots. |
+| `/resident mobs` | Toggles mob spawning status for your plots. |
+| `/resident map` | Turns on map which refreshes on plot border crossing. |
+| `/resident townclaim` | Turns on automatic /town claim mode. |
+| `/resident townunclaim` | Turns on automatic /town unclaim mode. |
+| `/resident bedspawn` | Prioritizes bed spawn over town spawn. |
+| `/resident plotborder` | Turns on smokey plot-border view. |
+| `/resident constantplotborder` | Turns on constant smokey plot-border view. |
+| `/resident townborder` | Turns on smokey plot-border view of your town. |
+| `/resident bordertitles` | Toggles Title messages on/off when entering/leaving towns. |
+| `/resident plotgroup` | Turns on automatic plot group adding mode. |
+| `/resident spy` | Admins can turn on chat-channel spying. |
+| `/resident ignoreplots` | Toggles plot notifications in town. |
+| `/resident reset` | Turns off all active modes. |
+| `/resident infotool` | Allows admins to use the clay brick tool for block/entity info. |
+| `/resident adminbypass` | Allows admins to play as non-admins. |
+| `/resident setperm {on/off} {friend/ally/outsider} {on/off} {build/destroy/switch/itemuse} {on/off}` | Edits the perm line. |
+| `/resident setperm reset` | Applies the resident perm line to all owned plots. |
+| `/resident about {message/clear}` | Sets/removes a bio message. |
+| `/resident tax {resname}` | Shows taxes a player pays. |
+
+### /town
+
+| Command | Description |
+|---------|-------------|
+| `/town` | Shows a player their town's town screen. |
+| `/town ?` | Shows /town commands available. |
+| `/town {town}` | Shows another town's town screen. |
+| `/town here` | Shows the town screen of the town you are in. |
+| `/town leave` | Leaves a town. |
+| `/town list by name {page #}` | Lists towns alphabetically. |
+| `/town list by resident {page #}` | Lists towns by resident count. |
+| `/town list by balance {page #}` | Lists towns by nation bank balance. |
+| `/town list by townblocks {page #}` | Lists towns by claimed townblocks. |
+| `/town list by online {page #}` | Lists towns by online player count. |
+| `/town list by open {page #}` | Lists open towns first. |
+| `/town list by public {page #}` | Lists public towns first. |
+| `/town list by ruined {page #}` | Lists ruined towns first. |
+| `/town list by bankrupt {page #}` | Lists bankrupt towns first. |
+| `/town list by founded {page #}` | Lists towns by founding date. |
+| `/town online` | Shows online players in your town. |
+| `/town plots {townname}` | Shows a list of plots owned by the town. |
+| `/town new {townname}` | Creates a new town. |
+| `/town add {resident} .. {resident}` | Adds residents to your town. |
+| `/town kick {resident} .. {resident}` | Removes residents from your town. |
+| `/town invite` | Shows a list of players invited to your town. |
+| `/town sent` | Shows a list of invites sent by your town. |
+| `/town removeall` | Denies all sent invites. |
+| `/town received` | Shows a list of invites your town has received. |
+| `/town accept {nationname}` | Accepts an invite to join a nation. |
+| `/town deny {nationname}` | Denies an invite to join a nation. |
+| `/town invite {playername}` | Sends an invite to a player to join your town. |
+| `/town spawn` | Teleports you to your town's spawn. |
+| `/town spawn {town}` | Teleports you to another town's spawn. |
+| `/town claim` | Claims the townblock you are standing in. |
+| `/town claim outpost [#|name]` | Claims an outpost. |
+| `/town claim {# (radius)}` | Claims an area of townblocks. |
+| `/town claim auto` | Claims as many townblocks as possible. |
+| `/town claim fill` | Flood fills a surrounded area of plots. |
+| `/town unclaim` | Unclaims the townblock you are standing in. |
+| `/town unclaim all` | Unclaims all townblocks. |
+| `/town unclaim {# (radius)}` | Unclaims an area of townblocks. |
+| `/town unclaim outpost` | Unclaims glitched outposts. |
+| `/town cede plot {townname}` | Gives the townblock to another town. |
+| `/town withdraw {$}` | Removes money from the town bank. |
+| `/town withdraw all` | Withdraws all money from the town bank. |
+| `/town deposit {$}` | Adds money to the town bank. |
+| `/town deposit all` | Deposits all your money into the town bank. |
+| `/town deposit {$} {townname}` | Deposits money into another town's bank. |
+| `/town baltop {townname}` | Shows the richest players in a town. |
+| `/town bankhistory {#}` | Shows the town bank history. |
+| `/town buy bonus {amount}` | Buys bonus townblocks. |
+| `/town allylist {townname}` | Displays a list of allies. |
+| `/town enemylist {townname}` | Displays a list of enemies. |
+| `/town delete {town name}` | Deletes a town. |
+| `/town forsale/fs [$]` | Puts a town up for sale. |
+| `/town notforsale/nfs` | Removes a town from being for sale. |
+| `/town buytown {townname}` | Buys a town that is for sale. |
+| `/town merge {town name}` | Merges another town into your town. |
+| `/town outlawlist {town}` | Displays a list of outlaws for a town. |
+| `/town outlaw {add/remove} {name}` | Adds/removes an outlaw. |
+| `/town outpost {#}` | Teleports to an outpost. |
+| `/town outpost {list}` | Lists your town's outposts. |
+| `/town plotgrouplist {townname} {page #}` | Lists a town's plot groups. |
+| `/town purge {days}` | Kicks inactive residents. |
+| `/town ranklist {townname}` | Displays residents and their ranks. |
+| `/town rank {add/remove} {playername} {rankname}` | Grants/removes a rank. |
+| `/town reclaim` | Reclaims a ruined town. |
+| `/town reslist {townname}` | Shows a list of all residents in a town. |
+| `/town say {msg}` | Broadcasts a message to online town members. |
+| `/town set board {message/none}` | Sets/clears the town's login message. |
+| `/town set mayor {resident}` | Gives mayor status to another resident. |
+| `/town set homeblock` | Sets the homeblock and spawn. |
+| `/town set spawn` | Sets the town spawn. |
+| `/town set spawncost` | Sets the cost of spawning to a public town. |
+| `/town set mapcolor {color}` | Sets the town's map color. |
+| `/town set name {name}` | Changes the town's name. |
+| `/town set outpost` | Resets the outpost's spawn point. |
+| `/town set perm {on/off} {resident/ally/outsider} {on/off} {build/destroy/switch/itemuse} {on/off}` | Edits the perm line. |
+| `/town set perm reset` | Applies the town perm line to all plots. |
+| `/town set tag {upto4character/clear}` | Sets/clears the town tag. |
+| `/town set taxes {$}` | Sets daily taxes. |
+| `/town set taxpercentcap {$}` | Sets the maximum tax percentage. |
+| `/town set plottax {$}` | Sets daily plot taxes. |
+| `/town set plotprice {$}` | Sets default plot price. |
+| `/town set shopprice {$}` | Sets default shop plot price. |
+| `/town set shoptax {$}` | Sets daily shop plot tax. |
+| `/town set embassyprice {$}` | Sets default embassy plot price. |
+| `/town set embassytax {$}` | Sets daily embassy plot tax. |
+| `/town set title {name} {titlegoeshere}` | Adds a title to a resident. |
+| `/town set title {name}` | Removes a title from a resident. |
+| `/town set surname {name} {surnamegoeshere}` | Adds a surname to a resident. |
+| `/town set surname {name}` | Removes a surname from a resident. |
+| `/town set primaryjail` | Sets the town's primary jail. |
+| `/town toggle explosion` | Toggles explosions in town. |
+| `/town toggle fire` | Toggles firespread in town. |
+| `/town toggle mobs` | Toggles hostile mob spawning in town. |
+| `/town toggle public` | Toggles public spawning and homeblock coordinates. |
+| `/town toggle pvp` | Toggles pvp in town. |
+| `/town toggle taxpercent` | Toggles taxing by percent/flat rate. |
+| `/town toggle nationzone` | Toggles the town's NationZone. |
+| `/town toggle open` | Toggles public joining. |
+| `/town toggle takeoverclaim` | Toggles takeover claim. |
+| `/town join {townname}` | Joins a town that doesn't require invites. |
+| `/town jail list` | Shows jail information. |
+| `/town jail {name} [hours] [bail] [jail] [cell]` | Jails a player. |
+| `/town unjail {name}` | Unjails a player. |
+| `/town trust add {name}` | Adds a player as Trusted to the town. |
+| `/town trust remove {name}` | Removes a player from being Trusted by the town. |
+| `/town trust list` | Displays a list of trusted players. |
+| `/town trusttown add [townname]` | Adds a town as trusted. |
+| `/town trusttown remove [townname]` | Removes a town as trusted. |
+| `/town trusttown list` | Displays a list of trusted towns. |
+
+### /nation
+
+| Command | Description |
+|---------|-------------|
+| `/nation` | Shows a player their nation's nation screen. |
+| `/nation ?` | Shows /nation commands. |
+| `/nation list by name {page #}` | Lists nations alphabetically. |
+| `/nation list by resident {page #}` | Lists nations by resident count. |
+| `/nation list by balance {page #}` | Lists nations by nation bank balance. |
+| `/nation list by towns {page #}` | Lists nations by town count. |
+| `/nation list by townblocks {page #}` | Lists nations by claimed townblocks. |
+| `/nation list by online {page #}` | Lists nations by online player count. |
+| `/nation list by open {page #}` | Lists open nations first. |
+| `/nation list by public {page #}` | Lists public nations first. |
+| `/nation list by founded {page #}` | Lists nations by founding date. |
+| `/nation online` | Shows online players in your nation. |
+| `/nation {nation}` | Shows another nation's screen. |
+| `/nation leave` | Leaves a nation. |
+| `/nation withdraw {$}` | Removes money from the nation bank. |
+| `/nation withdraw all` | Withdraws all money from the nation bank. |
+| `/nation deposit {$}` | Adds money to the nation bank. |
+| `/nation deposit all` | Deposits all your money into the nation bank. |
+| `/nation baltop {nationname}` | Shows the richest players in a nation. |
+| `/nation bankhistory {#}` | Shows the nation bank history. |
+| `/nation deposit {$} {townname}` | Deposits money into a town's bank. |
+| `/nation new {nationname}` | Creates a new nation. |
+| `/nation rank` | Command to set assistant/custom ranks. |
+| `/nation add {town} .. {town}` | Adds towns to your nation. |
+| `/nation kick {town} .. {town}` | Removes towns from your nation. |
+| `/nation delete {nation}` | Deletes your nation. |
+| `/nation invite` | Shows a list of invites sent. |
+| `/nation sent` | Shows a list of invites sent. |
+| `/nation invite {town}` | Invites a town to a nation. |
+| `/nation ally add {nation} .. {nation}` | Adds nations to your ally list. |
+| `/nation ally remove {nation} .. {nation}` | Removes nations from your ally list. |
+| `/nation ally accept {nationname}` | Accepts an ally invitation. |
+| `/nation ally deny {nationname}` | Denies an ally invitation. |
+| `/nation ally sent` | Shows sent ally invitations. |
+| `/nation ally received` | Shows received ally invitations. |
+| `/nation enemy add {nation} .. {nation}` | Adds nations to your enemy list. |
+| `/nation enemy remove {nation} .. {nation}` | Removes nations from your enemy list. |
+| `/nation rank {add/remove} {playername} {rankname}` | Grants/removes a rank. |
+| `/nation sanctiontown add [townname]` | Adds a town to the sanctioned town list. |
+| `/nation sanctiontown remove [townname]` | Removes a town from the sanctioned town list. |
+| `/nation sanctiontown list [nationname]` | Lists sanctioned towns. |
+| `/nation say {msg}` | Broadcasts a message to online nation members. |
+| `/nation setking {resident}` | Changes the king of the nation. |
+| `/nation set capital {town}` | Sets the capital and king. |
+| `/nation set board {message/none}` | Sets/clears the nation's login message. |
+| `/nation set taxes {$}` | Sets nation taxes. |
+| `/nation set conqueredtax {$}` | Sets conquered tax. |
+| `/nation set taxpercentcap` | Sets the maximum tax percentage. |
+| `/nation set name {name}` | Sets the nation's name. |
+| `/nation set spawn` | Sets the nation spawn point. |
+| `/nation set spawncost` | Sets the cost of public spawns. |
+| `/nation set title {name} {titlegoeshere}` | Adds a title to a member. |
+| `/nation set title {name}` | Clears a title from a member. |
+| `/nation set surname {name} {surnamegoeshere}` | Adds a surname to a member. |
+| `/nation set surname {name}` | Clears a surname from a member. |
+| `/nation set tag {upto4character/clear}` | Sets/clears the nation tag. |
+| `/nation set mapcolor {color}` | Sets the map color. |
+| `/nation toggle neutral` | Toggles neutrality during war. |
+| `/nation toggle open` | Sets the nation to be open. |
+| `/nation toggle taxpercent` | Toggles percentage-based taxation. |
+| `/nation join {nation}` | Joins an open nation. |
+| `/nation merge {nationname}` | Requests a nation merge. |
+| `/nation ranklist {nationname}` | Displays residents and their ranks. |
+| `/nation townlist [nation]` | Lists all towns in a nation. |
+| `/nation allylist [nation]` | Lists all allies of a nation. |
+| `/nation enemylist [nation]` | Lists all enemies of a nation. |
+
+### /invite
+
+| Command | Description |
+|---------|-------------|
+| `/invite` | Shows subcommands. |
+| `/invite ?/help` | Shows subcommands. |
+| `/invite list` | Shows a list of invites you have received from towns. |
+| `/invite accept {town}` | Accepts an invite to join a town. |
+| `/invite deny {town}` | Denies an invite to join a town. |
+| `/invite deny all` | Denies all received town invites. |

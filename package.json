@@ -1,0 +1,28 @@
+{
+  "name": "wiki",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/starlight": "^0.37.4",
+    "@fontsource-variable/anuphan": "^5.2.8",
+    "astro": "^5.16.15",
+    "sharp": "^0.34.2",
+    "starlight-save-file-component": "^0.1.1",
+    "starlight-sidebar-swipe": "^0.1.1",
+    "starlight-sidebar-topics": "^0.6.2",
+    "starlight-ui-tweaks": "^0.2.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "wrangler": "^4.54.0"
+  }
+}

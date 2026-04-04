@@ -1,0 +1,30 @@
+---
+title: Plots
+---
+
+Plots are specific chunks of land within a Towny town that can be assigned different types to regulate player interactions and activities. Proper management of plots is essential for maintaining order and functionality within your town.
+
+## Plot Types and Their Purposes
+
+To designate a plot type, use the command `/plot set [Plot Type]`. Below are the available plot types and their purposes:
+
+* **Arena**: Enables PvP at all times and allows friendly-fire damage. Player inventory and experience will not be lost on death, and item durability willl not be degraded during combat.
+* **Bank**: For your town's banking purposes, mainly for `/t deposit [Amount]` and `/t withdraw [Amount]` commands.
+* **Embassy**: Allows residents from other towns to claim a plot within your town.
+* **Farm**: Permits killing animals, breaking and placing crops, leaves, and beehives.
+* **Inn**: Allows any player to set their `/res spawn` using a bed and respawn upon death. Players from enemy nations cannot use Inns.
+* **Jail**: Enables mayors and police to jail and release residents using `/town toggle jail`. Jailed residents are sent to a jail plot if available.
+* **Outpost**: A town claim located away from the main town area.
+* **Shop**: Permits the construction of player-made chest shops for trading.
+* **Wilds**: Designates semi-protected wilderness plots where certain natural blocks like trees, flowers, and mushrooms can be interacted with, while other blocks cannot.
+
+## Identifying Plot Types
+
+To determine a plot's type, follow these steps:
+
+1. Enable chunk border visibility by pressing `F3` + `G`.
+2. Type `/towny map big` to view nearby plots (chunks) and their corresponding types listed in a key.
+
+For instance, a green **$** symbolizes a plot available for purchase within your town, while a white **$** indicates a plot for sale in another town.
+
+To purchase a plot, stand on the desired plot and type `/plot claim`.

@@ -1,0 +1,44 @@
+@import "starlight-ui-tweaks/styles";
+
+:root {
+  --sl-font: 'Anuphan Variable', sans-serif;
+  
+  /* Dark mode colors */
+  --sl-color-accent-low: #382512;
+  --sl-color-accent: #e5a463;
+  --sl-color-accent-high: #ffdec0;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eceef2;
+  --sl-color-gray-2: #c0c2c7;
+  --sl-color-gray-3: #888b96;
+  --sl-color-gray-4: #545861;
+  --sl-color-gray-5: #353841;
+  --sl-color-gray-6: #24272f;
+  --sl-color-black: #17181c;
+}
+
+:root[data-theme='light'] {
+  /* Light mode colors */
+  --sl-color-accent-low: #ffeedd;
+  --sl-color-accent: #e5a463;
+  --sl-color-accent-high: #5c3a12;
+  --sl-color-white: #17181c;
+  --sl-color-gray-1: #24272f;
+  --sl-color-gray-2: #353841;
+  --sl-color-gray-3: #545861;
+  --sl-color-gray-4: #888b96;
+  --sl-color-gray-5: #c0c2c7;
+  --sl-color-gray-6: #eceef2;
+  --sl-color-gray-7: #f5f6f8;
+  --sl-color-black: #ffffff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+starlight-lang-select select {
+    width: auto !important;
+}

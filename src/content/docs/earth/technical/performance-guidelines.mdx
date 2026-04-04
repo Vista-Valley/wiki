@@ -1,0 +1,107 @@
+---
+title: Performance Guidelines
+description: Guidelines to help improve server performance and reduce lag.
+---
+
+There are several restrictions in place to help reduce lag and improve server performance.
+
+## Server Properties
+
+* The server's simulation distance is set to `4`.
+* The server's view/render distance is set to `8`.
+
+:::note[Improving Your View Distance]
+To enhance your view distance even further, it is recommended to install either [Distant Horizons](https://modrinth.com/mod/distanthorizons), [Bobby](https://modrinth.com/mod/bobby) or any similarly functioning mods on your Minecraft client.
+:::
+
+## Per-Chunk Limits
+
+Players are encouraged to manage entities and blocks responsibly to prevent server lag.
+
+### Mob Caps
+
+We have implemented **mob caps** to prevent server performance degradation.
+
+* **Group A** (*animals*, *fishes*; excluding tameable mobs such as cats, wolves, and horses)
+  * Limit: **50** entities per chunk; entities above this are killed.
+* **Group B** (*monsters*; excluding zombie villagers)
+  * Limit: **30** entities per chunk; entities above this are killed.
+* **Group C** (*villagers*, *zombie villagers*, *wandering traders*)
+  * Limit: **20** entities per chunk; entities above this are killed.
+* **Group D** (*vehicles*: boats and minecarts)
+  * Limit: **25** entities per chunk; excess vehicles are removed.
+
+:::note[Mob Cap Exemptions]
+The following entities are exempt from mob cap calculations:
+* Named mobs
+* Tamed mobs
+* Leashed mobs
+* Mounted mobs (e.g. a boat with a villager in it)
+* Mobs in breeding ("love-mode")
+:::
+
+### Other Limits
+
+We also enforce limits on other items.
+
+* Maximum of `250` [block entities](https://minecraft.wiki/w/Block_entity).
+  * Spawners can be stacked up to `50` each.
+* Maximum of `50` hoppers.
+* Maximum of `50` pistons.
+* Maximum of `100` decorative entities (e.g., item frames, glow item frames, armor stands and paintings).
+* Maximum of `250` other redstone components.
+
+<details>
+
+<summary>Included redstone components</summary>
+
+* Redstone Block
+* Repeater
+* Redstone Wire
+* Comparator
+* Calibrated Sculk Sensor
+* Observer
+* Copper Bulb
+* Redstone Torch
+* Sculk Sensor
+* Crafter
+* Dispenser
+* Dropper
+* Redstone Lamp
+* Slime Block
+* Honey Block
+* Target
+* Daylight Detector
+* Note Block
+* Tripwire Hook
+* Lightning Rod
+* Lever
+* All variations of rails (except normal rails).
+* All variations of buttons.
+* All variations of pressure plates.
+
+</details>
+
+:::note[Redstone Optimization]
+1. We use [Alternate Current](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md)'s redstone implementation on this server, which significantly reduces redstone lag by optimizing power calculations and minimizing block and shape updates. As a side effect of these changes, the block update order of redstone dust networks is predictable and intuitive rather than locational and chaotic.
+2. We've enabled a feature that ensures hoppers no longer ignore containers inside occluding blocks (like a hopper minecart inside a sand block). This helps improve hopper performance by optimizing item insertion checks.
+:::
+
+## Spawner Guidelines
+
+We use stacked spawners and stacked mobs to reduce lag. Key points players should know:
+
+### Stacked Spawners
+
+* Spawners stack (up to `50`) and are **protected from explosions**.
+* **Silk Touch** is required to move spawners. Sneaking breaks the whole stack at once (keeps it stacked).
+* Spawners spawn a few mobs per cycle, scale with stack size, and won't run if too many mobs are nearby.
+* Mobs from spawners try to **spawn directly into nearby stacks**.
+* Spawner mobs have **greatly limited AI** (no pathfinding/targeting) to cut lag.
+
+### Stacked Mobs
+
+* Only **spawner-spawned mobs stack**. Stacks from nearby, respect line of sight, and can merge downward for flying mobs.
+* Stacks aren't all killed at once by default; limited multi-kill exists to speed cleanup.
+* Loot/XP are optimized on very large stacks; transformations (lightning, drowning, etc.) apply to the whole stack.
+* AI-disabled mobs stay put and silent but can still be pushed.
