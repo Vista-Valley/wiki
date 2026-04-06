@@ -19,7 +19,7 @@
     "starlight-save-file-component": "^0.1.1",
     "starlight-sidebar-swipe": "^0.1.1",
     "starlight-sidebar-topics": "^0.6.2",
-    "starlight-ui-tweaks": "^0.2.0",
+    "starlight-ui-tweaks": "^0.2.2",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
