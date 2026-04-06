@@ -54,6 +54,7 @@ export default defineConfig({
                     }
                 }
             ],
+            lastUpdated: true,
             plugins: [
                 starlightSidebarTopics([
                     {
