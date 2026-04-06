@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/cloudflare": "^13.1.7",
     "@astrojs/starlight": "^0.37.4",
     "@fontsource-variable/anuphan": "^5.2.8",
     "astro": "^5.16.15",
