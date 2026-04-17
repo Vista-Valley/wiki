@@ -20,7 +20,7 @@
     "starlight-sidebar-swipe": "^0.2.0",
     "starlight-sidebar-topics": "^0.7.1",
     "starlight-ui-tweaks": "^0.2.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "wrangler": "^4.83.0"
