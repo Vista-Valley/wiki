@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^12.6.12",
-    "@astrojs/starlight": "^0.37.4",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/cloudflare": "^13.1.10",
+    "@astrojs/starlight": "^0.38.3",
     "@fontsource-variable/anuphan": "^5.2.8",
-    "astro": "^5.16.15",
+    "astro": "^6.1.7",
     "sharp": "^0.34.2",
     "starlight-save-file-component": "^0.1.1",
     "starlight-sidebar-swipe": "^0.1.1",
