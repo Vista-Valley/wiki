@@ -10,8 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@astrojs/cloudflare": "^13.1.10",
     "@astrojs/starlight": "^0.38.3",
     "@fontsource-variable/anuphan": "^5.2.8",
     "astro": "^6.1.7",
@@ -19,8 +17,7 @@
     "starlight-save-file-component": "^0.1.1",
     "starlight-sidebar-swipe": "^0.2.0",
     "starlight-sidebar-topics": "^0.7.1",
-    "starlight-ui-tweaks": "^0.2.2",
-    "typescript": "^5.9.3"
+    "starlight-ui-tweaks": "^0.2.2"
   },
   "devDependencies": {
     "wrangler": "^4.83.0"
