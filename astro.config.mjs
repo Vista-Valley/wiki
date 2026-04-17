@@ -5,8 +5,6 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightSidebarSwipe from 'starlight-sidebar-swipe';
 import starlightUiTweaks from 'starlight-ui-tweaks';
 
-import cloudflare from '@astrojs/cloudflare';
-
 // https://astro.build/config
 export default defineConfig({
     site: 'https://wiki.vistavalley.xyz',
@@ -162,6 +160,5 @@ export default defineConfig({
                 })
             ],
         }),
-    ],
-    adapter: cloudflare(),
+    ]
 });
