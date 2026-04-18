@@ -1,6 +1,19 @@
-# Wiki
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="public/logo.png">
+    <img alt="VistaValley" height="200px" src="public/logo.png">
+  </picture>
+</p>
+<h1 align="center">Welcome to Vista Valley's official wiki repository</h1>
 
-Welcome to Vista Valley's official wiki repository.
+<p align='center'>
+  <a href="https://vista-valley.paynow.store"><img alt="Store" src="https://img.shields.io/badge/Store-Visit-555555?style=for-the-badge&logo=shopify&logoColor=ffffff&labelColor=FF9655&" /></a>
+  &nbsp;
+  <a href="https://discord.com/invite/kGNtrKUq8F"><img alt="Discord" src="https://img.shields.io/discord/1239102938819854336.svg?style=for-the-badge&logo=discord&logoColor=ffffff&color=555555&labelColor=6A7EC2&label=Discord" /></a>
+  &nbsp;
+</p>
+
+Explore our vibrant community and discover what makes Vista Valley unique. Whether you’re here to join our server, learn about our community, or seek inspiration, you’ve come to the right place!
 
 ## 🧞 Commands
 
