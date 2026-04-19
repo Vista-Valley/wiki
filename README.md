@@ -16,7 +16,18 @@
   <a href="https://mcstatus.io/status/java/join.vistavalley.xyz"><img alt="Minecraft Server" height="100px" src="https://api.mcstatus.io/v2/widget/java/join.vistavalley.xyz?style=for-the-badge" /></a>
   &nbsp;
 </p>
+
 Explore our vibrant community and discover what makes Vista Valley unique. Whether you’re here to join our server, learn about our community, or seek inspiration, you’ve come to the right place!
+
+- **Website**: https://wiki.vistavalley.xyz
+- **World Map**: https://map.vistavalley.xyz
+
+---
+
+This repo is made Open-Source for contributers to make best of additions and documentations for the server with **Flairs** as a reward.
+
+---
+
 
 ## 🧞 Commands
 
