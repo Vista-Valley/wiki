@@ -12,7 +12,10 @@
   <a href="https://discord.com/invite/kGNtrKUq8F"><img alt="Discord" src="https://img.shields.io/discord/1239102938819854336.svg?style=for-the-badge&logo=discord&logoColor=ffffff&color=555555&labelColor=6A7EC2&label=Discord" /></a>
   &nbsp;
 </p>
-
+<p align='center'>
+  <a href="https://mcstatus.io/status/java/join.vistavalley.xyz"><img alt="Minecraft Server" height="100px" src="https://api.mcstatus.io/v2/widget/java/join.vistavalley.xyz?style=for-the-badge" /></a>
+  &nbsp;
+</p>
 Explore our vibrant community and discover what makes Vista Valley unique. Whether you’re here to join our server, learn about our community, or seek inspiration, you’ve come to the right place!
 
 ## 🧞 Commands
