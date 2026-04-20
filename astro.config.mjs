@@ -111,7 +111,7 @@ export default defineConfig({
                                     { label: 'Chat Channels', link: 'earth/towny/chat-channels' },
                                     { label: 'Towns', autogenerate: { directory: 'earth/towny/towns' } },
                                     { label: 'Nations', autogenerate: { directory: 'earth/towny/nations' } },
-                                    { label: 'Wars', link: 'earth/towny/wars' },
+                                    // { label: 'Wars', link: 'earth/towny/wars' },
                                 ]
                             },
                             {
