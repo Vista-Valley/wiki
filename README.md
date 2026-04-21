@@ -26,8 +26,14 @@ Explore our vibrant community and discover what makes Vista Valley unique. Wheth
 
 This repo is made Open-Source for contributers to make best of additions and documentations for the server with **Flairs** as a reward.
 
----
+![flairs example](https://github.com/Meustrabil/wiki/blob/6ce3e32027dc3703041738c0df99ea76e14b2129/public/image_2026-04-21_122616171.png)
 
+## 📊 Contributing
+
+You are free to report bugs or contribute to this project. Just open <a href="../../issues">Issues</a> or <a href="../../pulls">Pull Requests</a> and the team will look into them.
+
+> [!TIP]
+> Contributions are not limited to code. Making suggestions, reporting bugs, and sharing the project with others are all forms of contribution that are highly appreciated.
 
 ## 🧞 Commands
 
