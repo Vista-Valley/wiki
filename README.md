@@ -24,9 +24,9 @@ Explore our vibrant community and discover what makes Vista Valley unique. Wheth
 
 ---
 
-This repo is made Open-Source for contributers to make best of additions and documentations for the server with **Flairs** as a reward.
+This repo is made Open-Source for contributers to make best of additions and documentations for the server with **[📖 Wiki] Flairs** as a reward.
 
-![flairs example](https://github.com/Meustrabil/wiki/blob/6ce3e32027dc3703041738c0df99ea76e14b2129/public/image_2026-04-21_122616171.png)
+![flairs example](https://github.com/Meustrabil/wiki/blob/26a2e39730164a153adb63627e328e98722ed572/public/image_2026-04-21_130021869.png)
 
 ## 📊 Contributing
 
