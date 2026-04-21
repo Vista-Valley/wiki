@@ -20,6 +20,6 @@
     "starlight-ui-tweaks": "^0.2.2"
   },
   "devDependencies": {
-    "wrangler": "^4.84.0"
+    "wrangler": "^4.84.1"
   }
 }
