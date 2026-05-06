@@ -4,6 +4,8 @@ import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightSidebarSwipe from 'starlight-sidebar-swipe';
 import starlightUiTweaks from 'starlight-ui-tweaks';
+import starlightPageActions from 'starlight-page-actions';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +21,7 @@ export default defineConfig({
                 replacesTitle: true,
             },
             editLink: {
-                baseUrl: 'https://github.com/Vista-Valley/wiki/edit/main/',
+                baseUrl: 'https://github.com/VistaValleyMC/wiki/edit/main/',
             },
             defaultLocale: 'root',
             locales: {
@@ -157,6 +159,11 @@ export default defineConfig({
                         buttonLabel: "View on Modrinth",
                         buttonHref: "https://modrinth.com/modpack/gensou",
                     },
+                }),
+                starlightPageActions(),
+                starlightLlmsTxt({
+                    promote: ['home/welcome*', 'home/play-now*', 'home/**/*'],
+                    demote: ['branding*'],
                 })
             ],
         }),
