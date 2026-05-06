@@ -160,7 +160,9 @@ export default defineConfig({
                         buttonHref: "https://modrinth.com/modpack/gensou",
                     },
                 }),
-                starlightPageActions(),
+                starlightPageActions({
+                    share: true,
+                }),
                 starlightLlmsTxt({
                     promote: ['home/welcome*', 'home/play-now*', 'home/**/*'],
                     demote: ['branding*'],
