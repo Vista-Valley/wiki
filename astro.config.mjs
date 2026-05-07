@@ -113,7 +113,6 @@ export default defineConfig({
                                     { label: 'Chat Channels', link: 'earth/towny/chat-channels' },
                                     { label: 'Towns', autogenerate: { directory: 'earth/towny/towns' } },
                                     { label: 'Nations', autogenerate: { directory: 'earth/towny/nations' } },
-                                    // { label: 'Wars', link: 'earth/towny/wars' },
                                 ]
                             },
                             {
@@ -148,13 +147,13 @@ export default defineConfig({
                 starlightSidebarSwipe(),
                 starlightUiTweaks({
                     navbarLinks: [
-                        { label: "World Map", href: "https://map.vistavalley.xyz" },
-                        { label: "Server Store", href: "https://store.vistavalley.xyz" },
-                        { label: "Gensou (Performance Modpack)", href: "https://modrinth.com/modpack/gensou" },
+                        { label: "World Map ↗", href: "https://map.vistavalley.xyz" },
+                        { label: "Server Store ↗", href: "https://store.vistavalley.xyz" },
+                        { label: "Gensou ↗", href: "https://modrinth.com/modpack/gensou" },
                     ],
                     ad: {
                         image: "https://raw.githubusercontent.com/MaboroshiKobo/Gensou/7fb81d5d385be6cb4f3476e8431b26f7f58bdbba/assets/images/icon_square.png",
-                        title: "Gensou (Modpack)",
+                        title: "Gensou ↗",
                         description: "Gensou balances high-end performance with essential quality-of-life utilities to enhance your gameplay on Vista Valley.",
                         buttonLabel: "View on Modrinth",
                         buttonHref: "https://modrinth.com/modpack/gensou",
