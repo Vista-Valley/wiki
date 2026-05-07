@@ -29,7 +29,7 @@ export default defineConfig({
                 // id: { label: 'Bahasa Indonesia', lang: 'id' },
             },
             favicon: '/logo.png',
-            social: [{ icon: 'discord', label: 'Discord', href: 'https://discord.vistavalley.xyz' }, { icon: 'github', label: 'GitHub', href: 'https://github.com/Vista-Valley' }],
+            social: [{ icon: 'discord', label: 'Discord', href: 'https://discord.vistavalley.xyz' }, { icon: 'github', label: 'GitHub', href: 'https://github.com/VistaValleyMC' }],
             customCss: ['./src/styles/custom.css', '@fontsource-variable/anuphan/wght.css'],
             head: [
                 {
