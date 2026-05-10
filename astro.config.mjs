@@ -92,17 +92,23 @@ export default defineConfig({
                             {
                                 label: 'Gameplay',
                                 collapsed: true,
-                                autogenerate: { directory: 'earth/gameplay' },
+                                items: [
+                                    { autogenerate: { directory: 'earth/gameplay', collapsed: true } }
+                                ],
                             },
                             {
                                 label: 'Economy',
                                 collapsed: true,
-                                autogenerate: { directory: 'earth/economy' },
+                                items: [
+                                    { autogenerate: { directory: 'earth/economy', collapsed: true } }
+                                ],
                             },
                             {
                                 label: 'Social',
                                 collapsed: true,
-                                autogenerate: { directory: 'earth/social' },
+                                items: [
+                                    { autogenerate: { directory: 'earth/social', collapsed: true } }
+                                ],
                             },
                             {
                                 label: 'Towny',
@@ -111,24 +117,30 @@ export default defineConfig({
                                     { label: 'Overview', link: 'earth/towny' },
                                     { label: 'Commands', link: 'earth/towny/commands' },
                                     { label: 'Chat Channels', link: 'earth/towny/chat-channels' },
-                                    { label: 'Towns', autogenerate: { directory: 'earth/towny/towns' } },
-                                    { label: 'Nations', autogenerate: { directory: 'earth/towny/nations' } },
+                                    { label: 'Towns', items: [{ autogenerate: { directory: 'earth/towny/towns', collapsed: true } }] },
+                                    { label: 'Nations', items: [{ autogenerate: { directory: 'earth/towny/nations', collapsed: true } }] },
                                 ]
                             },
                             {
                                 label: 'Fluff',
                                 collapsed: true,
-                                autogenerate: { directory: 'earth/fluff' },
+                                items: [
+                                    { autogenerate: { directory: 'earth/fluff', collapsed: true } }
+                                ],
                             },
                             {
                                 label: 'Technical',
                                 collapsed: true,
-                                autogenerate: { directory: 'earth/technical' },
+                                items: [
+                                    { autogenerate: { directory: 'earth/technical', collapsed: true } }
+                                ],
                             },
                             {
                                 label: 'Remnants of Gaia',
                                 collapsed: true,
-                                autogenerate: { directory: 'earth/remnants' },
+                                items: [
+                                    { autogenerate: { directory: 'earth/remnants', collapsed: true } }
+                                ],
                             },
                         ],
                     },
