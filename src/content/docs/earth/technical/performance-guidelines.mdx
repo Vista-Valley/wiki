@@ -46,46 +46,7 @@ We also enforce limits on other items.
 
 * Maximum of `250` [block entities](https://minecraft.wiki/w/Block_entity).
   * Spawners can be stacked up to `50` each.
-* Maximum of `50` hoppers.
-* Maximum of `50` pistons.
-* Maximum of `100` decorative entities (e.g., item frames, glow item frames, armor stands and paintings).
-* Maximum of `250` other redstone components.
-
-<details>
-
-<summary>Included redstone components</summary>
-
-* Redstone Block
-* Repeater
-* Redstone Wire
-* Comparator
-* Calibrated Sculk Sensor
-* Observer
-* Copper Bulb
-* Redstone Torch
-* Sculk Sensor
-* Crafter
-* Dispenser
-* Dropper
-* Redstone Lamp
-* Slime Block
-* Honey Block
-* Target
-* Daylight Detector
-* Note Block
-* Tripwire Hook
-* Lightning Rod
-* Lever
-* All variations of rails (except normal rails).
-* All variations of buttons.
-* All variations of pressure plates.
-
-</details>
-
-:::note[Redstone Optimization]
-1. We use [Alternate Current](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md)'s redstone implementation on this server, which significantly reduces redstone lag by optimizing power calculations and minimizing block and shape updates. As a side effect of these changes, the block update order of redstone dust networks is predictable and intuitive rather than locational and chaotic.
-2. We've enabled a feature that ensures hoppers no longer ignore containers inside occluding blocks (like a hopper minecart inside a sand block). This helps improve hopper performance by optimizing item insertion checks.
-:::
+* Maximum of `50` decorative entities (e.g., item frames, glow item frames, armor stands and paintings).
 
 ## Spawner Guidelines
 
@@ -105,3 +66,19 @@ We use stacked spawners and stacked mobs to reduce lag. Key points players shoul
 * Stacks aren't all killed at once by default; limited multi-kill exists to speed cleanup.
 * Loot/XP are optimized on very large stacks; transformations (lightning, drowning, etc.) apply to the whole stack.
 * AI-disabled mobs stay put and silent but can still be pushed.
+
+## Redstone Guidelines
+
+To help reduce lag, we have implemented the following redstone guidelines:
+* Redstone components (e.g., hoppers, pistons, dispensers) are **not limited by chunk** but are still subject to overall server performance optimizations.
+* Players are encouraged to use redstone components responsibly and avoid creating large, complex redstone contraptions that could cause lag.
+* Redstone contraptions that cause significant lag may be subject to removal or modification by server staff.
+
+:::note[Redstone Optimization]
+1. We use [Alternate Current](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md)'s redstone implementation on this server, which significantly reduces redstone lag by optimizing power calculations and minimizing block and shape updates. As a side effect of these changes, the block update order of redstone dust networks is predictable and intuitive rather than locational and chaotic.
+2. We've enabled a feature that ensures hoppers no longer ignore containers inside occluding blocks (like a hopper minecart inside a sand block). This helps improve hopper performance by optimizing item insertion checks.
+:::
+
+:::danger[Important]
+For further information on redstone and machine automation rules, please refer to the [Redstone & Machine Automation](/home/rules/#redstone-machine--automation) section of our rules.
+:::
