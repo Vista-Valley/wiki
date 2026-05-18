@@ -159,13 +159,13 @@ export default defineConfig({
                 starlightSidebarSwipe(),
                 starlightUiTweaks({
                     navbarLinks: [
-                        { label: "World Map ↗", href: "https://map.vistavalley.xyz" },
-                        { label: "Server Store ↗", href: "https://store.vistavalley.xyz" },
-                        { label: "Gensou ↗", href: "https://modrinth.com/modpack/gensou" },
+                        { label: "Web Map", href: "https://map.vistavalley.xyz" },
+                        { label: "Server Store", href: "https://store.vistavalley.xyz" },
+                        { label: "Gensou", href: "https://modrinth.com/modpack/gensou" },
                     ],
                     ad: {
                         image: "https://raw.githubusercontent.com/MaboroshiKobo/Gensou/7fb81d5d385be6cb4f3476e8431b26f7f58bdbba/assets/images/icon_square.png",
-                        title: "Gensou ↗",
+                        title: "Gensou",
                         description: "Gensou balances high-end performance with essential quality-of-life utilities to enhance your gameplay on Vista Valley.",
                         buttonLabel: "View on Modrinth",
                         buttonHref: "https://modrinth.com/modpack/gensou",

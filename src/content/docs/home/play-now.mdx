@@ -26,11 +26,13 @@ import { Steps } from '@astrojs/starlight/components';
 4. You're ready to join the adventure!
 </Steps>
 
-:::caution[`Failed to log in: Invalid session`]
-This error means your username is already taken by someone who owns the game. To resolve this issue, change your username and make sure it is not already taken on [NameMC](https://namemc.com/minecraft-names)
+:::caution[Are you getting `Failed to log in: Invalid session`?]
+This error means your username is already taken by someone who owns the game. To resolve this issue, change your username and make sure it is not already taken on [NameMC ↗](https://namemc.com/minecraft-names).
 :::
 
 ## Bedrock Edition
+
+##### Are you playing on a Mobile device or Windows 10/11? Follow the steps below to join the server!
 
 <Steps>
 1. Launch **Minecraft** on your Mobile device or Windows 10/11.
@@ -56,9 +58,15 @@ This error means your username is already taken by someone who owns the game. To
 4. You're ready to join the adventure!
 </Steps>
 
-:::note[Tip]
-If you have trouble joining using the server address, you can also join by adding `VistaValleyBE` as a friend on your Microsoft account and then joining through the friends list in Minecraft.
-:::
+##### Are you playing on a console like PlayStation, Xbox, or Nintendo Switch? Follow the steps below to join the server!
+
+<Steps>
+1. Launch **Minecraft** on your console and go to the **Friends** tab.
+
+2. Add `VistaValleyBE` as a friend.
+
+3. Join the server through the **Friends** tab.
+</Steps>
 
 :::caution[Known Bedrock Edition Limitations]
 The following things cannot be fixed without changes to Bedrock or the Java protocol in general. As of now, they are not fixable in Geyser (*A bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition)*.
@@ -66,11 +74,11 @@ The following things cannot be fixed without changes to Bedrock or the Java prot
 - Glowing effect
 - Distinguishing between left and right clicks in inventories
 - Redstone dot blockstates
-- Potion colors implemented using NBT
+- Potion colors implemented using the PotionContents data component
 - Various command arguments for any command that doesn't use the Minecraft Brigadier library
 - Anything that relies on tab complete or typing in the chat UI (related to the above) - Bedrock sends no packet that indicates they are in this menu
 - Unable to see banner layers past 6
-- Movement issues around bamboo due to offset differences between Java and Bedrock.
+- Movement issues around bamboo due to offset differences between Java and Bedrock. Use [Hurricane](/wiki/other/hurricane) to work around it.
 - Custom anvil recipes or custom smithing table ingredients/patterns ([GeyserMC/Geyser#4706](https://github.com/GeyserMC/Geyser/issues/4706))
 - Heights lower than -512 or higher than 512 in the overworld (and custom dimensions mapped by Geyser to the overworld), and heights lower than 0 or higher than 256 in other dimensions ([GeyserMC/Geyser#3804](https://github.com/GeyserMC/Geyser/issues/3804))
 - Dolphin's Grace potion effect visuals (effects should still work correctly)
@@ -83,4 +91,7 @@ The following things cannot be fixed without changes to Bedrock or the Java prot
 - Gliding without elytras/custom elytras (https://github.com/GeyserMC/Geyser/issues/3255, https://github.com/GeyserMC/Geyser/issues/3299)
 - Custom furnace cook times ([GeyserMC/Geyser#4104](https://github.com/GeyserMC/Geyser/issues/4104))
 - Maximum sign length different on Java/Bedrock edition ([GeyserMC/Geyser#4130](https://github.com/GeyserMC/Geyser/issues/4130))
+- Second line on advancement toasts ([GeyserMC/Geyser#3205](https://github.com/GeyserMC/Geyser/issues/3205))
+- Showing non-vanilla enchantment levels, such as "Silk Touch 2" ([GeyserMC/Geyser#5252](https://github.com/GeyserMC/Geyser/issues/5252))
+- Test instance blocks are not available in Bedrock ([GeyserMC/Geyser#6164](https://github.com/GeyserMC/Geyser/issues/6164))
 :::
