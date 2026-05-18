@@ -12,7 +12,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 [**Hopplet**](https://modrinth.com/plugin/hopplet) is a server plugin that lets you assign text-based filters to hoppers. Instead of building complex redstone sorting machines with dozens of hoppers and item locks, you simply write a filter expression directly on the hopper and it will only accept items that match.
 
 :::caution[Hopper Minecarts]
-Hopplet filtering is **disabled for hopper minecarts** on this server. Hopper minecarts are inherently laggy, so their use is discouraged. Filters only work on placed hoppers.
+Hopplet filtering is **disabled for hopper minecarts** on this server. Hopper minecarts tend to cause server lag, so their use is discouraged. Filters only work on placed hoppers.
 :::
 
 :::note[Why We Use Hopplet]
@@ -70,7 +70,7 @@ Some function arguments accept comparators to specify ranges.
 | `>=` | Greater than or equal to |
 | `<=` | Less than or equal to |
 
-**Example:** `durability(>=75, <=90)` - item must have between 75 % and 90 % durability remaining.
+**Example:** `durability(>=75, <=90)` - item must have between 75% and 90% durability remaining.
 
 ---
 
@@ -182,10 +182,10 @@ Lore is matched against the item's full lore text, with each lore line joined by
 
 When an item attempts to enter a hopper, Hopplet processes it in the following order:
 
-1. **Item arrives**: either from an adjacent inventory (another hopper, barrel, etc.) or by being physically dropped on top of the hopper.
+1. **Item arrives**: Either from an adjacent inventory (another hopper, barrel, etc.) or by being physically dropped on top of the hopper.
 2. **Filter is compiled**: Hopplet reads the filter expression stored on the hopper and compiles it. Compiled filters are cached while the chunk is loaded for performance.
-3. **Applicability check**: if the destination hopper has *no filter*, Hopplet checks surrounding hoppers (below the source inventory, or the one it leads into). If a nearby hopper *does* have a filter that specifically matches this item and still has space, the item is redirected there instead. This prevents un-filtered hoppers from "stealing" items that a filtered hopper further down the chain is waiting for.
-4. **Evaluation**: the item's properties are tested against the filter expression. If the expression evaluates to `true`, the item enters the hopper. If it evaluates to `false`, the item is not accepted.
+3. **Applicability check**: If the destination hopper has *no filter*, Hopplet checks surrounding hoppers (below the source inventory, or the one it leads into). If a nearby hopper *does* have a filter that specifically matches this item and still has space, the item is redirected there instead. This prevents un-filtered hoppers from "stealing" items that a filtered hopper further down the chain is waiting for.
+4. **Evaluation**: The item's properties are tested against the filter expression. If the expression evaluates to `true`, the item enters the hopper. If it evaluates to `false`, the item is not accepted.
 
 ---
 
@@ -246,21 +246,21 @@ When an item attempts to enter a hopper, Hopplet processes it in the following o
 
 ## Designing a Storage System
 
-A water-stream sorter is the most common and lag-friendly layout for Hopplet. Items float along a water channel and are picked up by hoppers placed beneath it. Because each hopper only needs a filter expression (no lock items, no comparator chains), the total hopper count stays very low.
+A water-stream sorter is the most commonly used and lag-friendly sorting system for Hopplet. Items travel along a water channel and are picked up by hoppers placed beneath it. Since each hopper only needs a filter expression (no lock items, no comparator chains), the overall hopper count remains minimal, which helps keep server performance high.
 
 ### Basic Layout
 
-1. **Water channel**: a one-block-wide canal of flowing water, typically 8-16 blocks long. Items thrown or dropped into one end float toward the other.
-2. **Filtered hoppers below the channel**: place a hopper under each section of the canal, facing into a chest or barrel beside it. Give each hopper a Hopplet filter for the items you want it to collect.
-3. **Dump at the end**: finish the canal with one or more plain (un-filtered) hoppers to catch anything that didn't match an earlier filter. You have two options:
-   - **Overflow chest**: hoppers feed into a chest or barrel for manual cleanup.
-   - **Burn pit**: let leftover items flow off the end of the canal into a lava pit or campfire to destroy them automatically. Useful for junk items (e.g. stone sword, iron chestplate) you never want to keep.
+1. **Water channel**: A one-block-wide canal of flowing water, typically 8-16 blocks long. Items thrown or dropped into one end float toward the other.
+2. **Filtered hoppers below the channel**: Place a hopper under each section of the canal, facing into a chest or barrel beside it. Give each hopper a Hopplet filter for the items you want it to collect.
+3. **Dump at the end**: Finish the canal with one or more plain (un-filtered) hoppers to catch anything that didn't match an earlier filter. You have two options:
+   - **Overflow chest**: Hoppers feed into a chest or barrel for manual cleanup.
+   - **Burn pit**: Let leftover items flow off the end of the canal into a lava pit or campfire to destroy them automatically. Useful for junk items (e.g. stone sword, iron chestplate) you never want to keep.
 
 :::note[Tips]
-- **Item despawn**: items in water streams despawn after a few minutes like any dropped item. For large batch-sorting, feed items in steadily rather than all at once.
-- **One hopper per category**: with Hopplet you only need a single hopper per item type. Keep the channel as short as possible.
-- **Filter only the topmost hopper**: if a filtered hopper feeds into a chain of hoppers below it (e.g. hopper - hopper - chest), only the hopper that picks items up from the stream needs a filter. Hoppers further down the chain just pass items along and don't need one.
-- **Vertical chests**: orient your storage chests to the side of the channel rather than below it so the hoppers can face sideways and leave room for more hoppers along the same row.
+- **Item despawn**: Items in water streams despawn after a few minutes like any dropped item. For large batch-sorting, feed items in steadily rather than all at once.
+- **One hopper per category**: With Hopplet you only need a single hopper per item type. Keep the channel as short as possible.
+- **Filter only the topmost hopper**: If a filtered hopper feeds into a chain of hoppers below it (e.g. hopper - hopper - chest), only the hopper that picks items up from the stream needs a filter. Hoppers further down the chain just pass items along and don't need one.
+- **Vertical chests**: Orient your storage chests to the side of the channel rather than below it so the hoppers can face sideways and leave room for more hoppers along the same row.
 :::
 
 :::tip[Keeping Performance Low]
