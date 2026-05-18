@@ -1,0 +1,280 @@
+---
+title: Hopplet
+description: How to use Hopplet to create smart hopper filters and build efficient sorting systems without complex redstone.
+---
+
+export const externalDocs = {
+  paper: "https://jd.papermc.io/paper/1.21.11",
+  minecraftWiki: "https://minecraft.wiki/w",
+}
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[**Hopplet**](https://modrinth.com/plugin/hopplet) is a server plugin that lets you assign text-based filters to hoppers. Instead of building complex redstone sorting machines with dozens of hoppers and item locks, you simply write a filter expression directly on the hopper and it will only accept items that match.
+
+:::caution[Hopper Minecarts]
+Hopplet filtering is **disabled for hopper minecarts** on this server. Hopper minecarts are inherently laggy, so their use is discouraged. Filters only work on placed hoppers.
+:::
+
+:::note[Why We Use Hopplet]
+Traditional item sorters require large chains of hoppers, each pre-filled with a lock item and wired to comparators. This burns through server resources. Hopplet removes the need for all of that. A single hopper with a filter expression can sort virtually any item, cutting entity counts and redstone ticks significantly.
+:::
+
+---
+
+## Creating a Filter
+
+Filters are managed through Hopplet's built-in **dialog interface**. Anvils cannot be used to apply filters; Hopplet maintains a deliberate distinction between normally named hoppers and filtered ones so that players who are unaware of Hopplet can still name their hoppers freely.
+
+### Opening the Dialog
+
+1. Make sure your main hand is **empty** (no item held).
+2. **Sneak + right-click** a hopper as if you were going to open its inventory.
+3. If you have permission to edit the hopper, the Hopplet filter dialog will open.
+
+From the dialog you can type a filter expression into the **"Filter Input"** box, press the **"Validate"** button to check your syntax, and finally press **"Confirm"** to save it.
+
+:::tip[Syntax Errors]
+If validation fails, the dialog highlights the error in red. Read the message carefully, as it usually pinpoints the exact character that is wrong (e.g., a missing closing `"`).
+:::
+
+A hopper that has been given a filter through Hopplet will display its name in **gold** in-game to distinguish it from a plain renamed hopper.
+
+---
+
+## Filter Syntax
+
+A filter is a logical expression. Each part is a **function call** that evaluates to `true` or `false` for a given item, and the parts are combined with logical operators.
+
+### Operators
+
+| Token | Meaning | Example |
+| :---- | :------ | :------ |
+| `function(args)` | Evaluates a condition | `type(diamond)` |
+| `plugin:function(args)` | Evaluates a condition from a specific plugin namespace | `hopplet:name("Secret Item")` |
+| `&` | Both sides must be true (AND) | `type(diamond_sword) & enchanted()` |
+| `\|` | Either side must be true (OR) | `type(gold_ingot) \| thrower(Steve)` |
+| `!` | Negates the following expression (NOT) | `!enchanted()` |
+| `( )` | Groups an expression to control evaluation order | `type(gold_ingot) \| (author(Steve) & generation(copy_of_copy))` |
+| `"…"` | Treats the contents as a literal string (including spaces) | `name("Super Secret Access Key")` |
+
+### Comparators
+
+Some function arguments accept comparators to specify ranges.
+
+| Comparator | Meaning |
+| :--------- | :------ |
+| `=` | Equal to |
+| `!=` | Not equal to (must be quoted: `"!= value"`) |
+| `>` | Greater than |
+| `<` | Less than |
+| `>=` | Greater than or equal to |
+| `<=` | Less than or equal to |
+
+**Example:** `durability(>=75, <=90)` - item must have between 75 % and 90 % durability remaining.
+
+---
+
+## Functions
+
+All functions below can be used in filter expressions. Many have shorter **aliases** listed in the *Alias* column.
+
+### Item Type & Material
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `material` | `type` | Item is of one of the specified materials[^material]. | `type(cobblestone, mossy_cobblestone)` |
+| `material_contains` | `type_contains` | Material[^material] name contains all specified strings. | `type_contains(stone)` |
+| `material_starts_with` | `type_starts_with` | Material[^material] name starts with one of the specified strings. | `type_starts_with(diamond, iron)` |
+| `material_ends_with` | `type_ends_with` | Material[^material] name ends with one of the specified strings. | `type_ends_with(e)` |
+| `tag` | `tagged` | Item has one of the specified Minecraft item tags[^item-tag] or block tags[^block-tag]. | `tag(wool)`, `tag(beds)` |
+| `rarity` | - | Item matches one of the specified item rarities[^rarity] (`common`, `uncommon`, `rare`, `epic`). | `rarity(common)` |
+
+### Display Name
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `display_name` | `name` | Item's display name matches one of the specified strings exactly. | `name("Super Secret Access Key")` |
+| `display_name_contains` | `name_contains` | Display name contains all specified strings. | `name_contains(stone, moss)` |
+| `display_name_starts_with` | `name_starts_with` | Display name starts with one of the specified strings. | `name_starts_with(mossy, diamond)` |
+| `display_name_ends_with` | `name_ends_with` | Display name ends with one of the specified strings. | `name_ends_with(map)` |
+
+### Lore
+
+Lore is matched against the item's full lore text, with each lore line joined by a space.
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `has_lore` | `lored` | Item has any lore. | `has_lore()` |
+| `lore` | - | Item's lore matches one of the specified strings exactly. | `lore("A rare artifact")` |
+| `lore_contains` | - | Item's lore contains all the specified strings. | `lore_contains(rare, artifact)` |
+| `lore_starts_with` | - | Item's lore starts with one of the specified strings. | `lore_starts_with("A rare")` |
+| `lore_ends_with` | - | Item's lore ends with one of the specified strings. | `lore_ends_with(artifact)` |
+
+### Stack & Condition
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `amount` | `size` | Stack size matches all the specified comparators. | `amount(>32, <48)` |
+| `durability` | `dur` | Durability as a percentage matches all specified comparators or special strings (`max`, `undamaged`). | `durability(max)`, `durability(>=90)` |
+| `is_damaged` | `damaged` | Item is damaged. | `damaged()` |
+| `is_unbreakable` | `unbreakable` | Item is unbreakable. | `unbreakable()` |
+| `is_repairable` | `repairable` | Item can be repaired in an anvil. | `repairable()` |
+| `is_stackable` | `stackable`, `can_stack` | Item type is stackable. | `stackable()` |
+
+### Enchantments & Armor Trims
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `enchantment` | `ench`, `enchant` | Item has all the specified enchantments[^enchantment] (optionally with level comparators). | `ench("sharpness >= 4", fire_aspect)` |
+| `is_enchanted` | `enchanted` | Item has at least one enchantment[^enchantment]. | `enchanted()` |
+| `has_armor_trim` | `is_trimmed`, `trimmed` | Item has an armor trim applied. | `trimmed()` |
+| `armor_trim_material` | `trim_material` | Armor trim material[^trim-material] matches one of the specified materials. | `trim_material(gold)` |
+| `armor_trim_pattern` | `trim_pattern` | Armor trim pattern[^trim-pattern] matches one of the specified patterns. | `trim_pattern(silence)` |
+
+### Food, Fuel & Smelting
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `is_edible` | `edible`, `is_food`, `food` | Item is edible. | `edible()` |
+| `is_fuel` | `fuel` | Item can be used as fuel in a furnace. | `fuel()` |
+| `is_smeltable` | `smeltable` | Item can be smelted in a furnace. | `smeltable()` |
+| `smeltable_by` | - | Item can be smelted in one of the specified furnace types (`furnace`, `smoker`, `blast_furnace`). | `smeltable_by(smoker, blast_furnace)` |
+
+### Books & Written Items
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `book_author` | `author` | Book's author matches one of the specified names. | `author(Steve)` |
+| `book_generation` | `generation` | Book's copy generation[^book-generation] matches (`original`, `copy_of_original`, `copy_of_copy`, `tattered`). | `generation(copy_of_copy)` |
+
+### Potions
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `potion_effect` | `effect`, `pot_eff`, `eff` | Item has all the specified potion effects[^potion-effect] (optionally with level comparators). | `effect("speed = 2", invisibility)` |
+| `potion_duration` | `duration`, `pot_dur` | Potion effect duration in ticks matches all specified comparators or special strings (`infinite`, `unlimited`). | `duration(>=3600)` |
+
+### Maps & Special Items
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `map_id` | `map` | Map ID matches all specified comparators. | `map_id(>=5, <=15, 1337)` |
+
+### Player Heads
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `skull_owner` | `head_owner` | Head's owner matches one of the specified usernames or UUIDs. | `head_owner(Steve)` |
+| `skull_texture` | `head_texture` | Head's texture matches one of the specified Base64 strings. | `head_texture(eyJ0ZXh…)` |
+
+### Source & Thrower
+
+| Function | Alias | Description | Example |
+| :------- | :---- | :---------- | :------ |
+| `source_inventory_type` | `source_type`, `source` | Item came from an inventory of the specified type[^inventory-type]. | `source(barrel)` |
+| `thrower` | `thrown_by` | Item was thrown by one of the specified players (username or UUID). | `thrower(Steve)` |
+| `thrower_towny_town` | `thrower_town`, `town` | Item was thrown by a member of one of the specified [towns](/earth/towny/towns/creating-a-town/). | `town(Melbourne)` |
+| `thrower_towny_nation` | `thrower_nation`, `nation` | Item was thrown by a member of one of the specified [nations](/earth/towny/nations/creating-a-nation/). | `nation(Australia)` |
+
+---
+
+## How Filtering Works
+
+When an item attempts to enter a hopper, Hopplet processes it in the following order:
+
+1. **Item arrives**: either from an adjacent inventory (another hopper, barrel, etc.) or by being physically dropped on top of the hopper.
+2. **Filter is compiled**: Hopplet reads the filter expression stored on the hopper and compiles it. Compiled filters are cached while the chunk is loaded for performance.
+3. **Applicability check**: if the destination hopper has *no filter*, Hopplet checks surrounding hoppers (below the source inventory, or the one it leads into). If a nearby hopper *does* have a filter that specifically matches this item and still has space, the item is redirected there instead. This prevents un-filtered hoppers from "stealing" items that a filtered hopper further down the chain is waiting for.
+4. **Evaluation**: the item's properties are tested against the filter expression. If the expression evaluates to `true`, the item enters the hopper. If it evaluates to `false`, the item is not accepted.
+
+---
+
+## Example Filters
+
+<Tabs>
+  <TabItem label="Simple type filter">
+    Accept only cobblestone and mossy cobblestone:
+    ```
+    type(cobblestone, mossy_cobblestone)
+    ```
+  </TabItem>
+  <TabItem label="Enchanted diamond gear">
+    Accept any enchanted diamond tool or armour:
+    ```
+    type_starts_with(diamond) & enchanted()
+    ```
+  </TabItem>
+  <TabItem label="Specific enchantment level">
+    Accept swords with Sharpness IV or higher and Fire Aspect:
+    ```
+    type(diamond_sword) & ench("sharpness >= 4", fire_aspect)
+    ```
+  </TabItem>
+  <TabItem label="Food items">
+    Accept anything edible:
+    ```
+    edible()
+    ```
+  </TabItem>
+  <TabItem label="Fuel (excluding coal blocks)">
+    Accept furnace fuels, but not coal blocks:
+    ```
+    fuel() & !type(coal_block)
+    ```
+  </TabItem>
+  <TabItem label="Smeltable ores">
+    Accept items that can be smelted in a blast furnace:
+    ```
+    smeltable_by(blast_furnace)
+    ```
+  </TabItem>
+  <TabItem label="Wool (any colour)">
+    Accept any wool using a tag:
+    ```
+    tag(wool)
+    ```
+  </TabItem>
+  <TabItem label="Large stack sizes">
+    Accept items that are already at least half a stack:
+    ```
+    amount(>=32)
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
+## Designing a Storage System
+
+A water-stream sorter is the most common and lag-friendly layout for Hopplet. Items float along a water channel and are picked up by hoppers placed beneath it. Because each hopper only needs a filter expression (no lock items, no comparator chains), the total hopper count stays very low.
+
+### Basic Layout
+
+1. **Water channel**: a one-block-wide canal of flowing water, typically 8-16 blocks long. Items thrown or dropped into one end float toward the other.
+2. **Filtered hoppers below the channel**: place a hopper under each section of the canal, facing into a chest or barrel beside it. Give each hopper a Hopplet filter for the items you want it to collect.
+3. **Dump at the end**: finish the canal with one or more plain (un-filtered) hoppers to catch anything that didn't match an earlier filter. You have two options:
+   - **Overflow chest**: hoppers feed into a chest or barrel for manual cleanup.
+   - **Burn pit**: let leftover items flow off the end of the canal into a lava pit or campfire to destroy them automatically. Useful for junk items (e.g. stone sword, iron chestplate) you never want to keep.
+
+:::note[Tips]
+- **Item despawn**: items in water streams despawn after a few minutes like any dropped item. For large batch-sorting, feed items in steadily rather than all at once.
+- **One hopper per category**: with Hopplet you only need a single hopper per item type. Keep the channel as short as possible.
+- **Filter only the topmost hopper**: if a filtered hopper feeds into a chain of hoppers below it (e.g. hopper - hopper - chest), only the hopper that picks items up from the stream needs a filter. Hoppers further down the chain just pass items along and don't need one.
+- **Vertical chests**: orient your storage chests to the side of the channel rather than below it so the hoppers can face sideways and leave room for more hoppers along the same row.
+:::
+
+:::tip[Keeping Performance Low]
+Water-stream sorters use far fewer hoppers and zero redstone compared to traditional lock-item designs. Fewer block entity ticks = less lag. Combine this with the server's existing [Performance Guidelines](/earth/technical/performance-guidelines/) for the best results.
+:::
+
+---
+[^material]: Material names correspond to <a href={`${externalDocs.paper}/org/bukkit/Material.html`}>Paper's Material</a> enum, lowercased (e.g. `DIAMOND_SWORD` to `diamond_sword`).
+[^rarity]: Item rarities correspond to <a href={`${externalDocs.paper}/org/bukkit/inventory/ItemRarity.html`}>Paper's ItemRarity</a> enum.
+[^enchantment]: Enchantment names correspond to <a href={`${externalDocs.paper}/org/bukkit/enchantments/Enchantment.html`}>Paper's Enchantment</a> class, lowercased (e.g. `SHARPNESS` to `sharpness`).
+[^trim-material]: Trim material names correspond to <a href={`${externalDocs.paper}/org/bukkit/inventory/meta/trim/TrimMaterial.html`}>Paper's TrimMaterial</a> interface, lowercased (e.g. `IRON` to `iron`).
+[^trim-pattern]: Trim pattern names correspond to <a href={`${externalDocs.paper}/org/bukkit/inventory/meta/trim/TrimPattern.html`}>Paper's TrimPattern</a> interface.
+[^book-generation]: Book generation values correspond to <a href={`${externalDocs.paper}/org/bukkit/inventory/meta/BookMeta.Generation.html`}>Paper's BookMeta.Generation</a> enum.
+[^potion-effect]: Potion effect names correspond to <a href={`${externalDocs.paper}/org/bukkit/potion/PotionEffectType.html`}>Paper's PotionEffectType</a> class, lowercased (e.g. `SPEED` to `speed`).
+[^inventory-type]: Inventory type names correspond to <a href={`${externalDocs.paper}/org/bukkit/event/inventory/InventoryType.html`}>Paper's InventoryType</a> enum, lowercased (e.g. `BARREL` to `barrel`).
+[^item-tag]: Item tag names correspond to the <a href={`${externalDocs.minecraftWiki}/Item_tag_(Java_Edition)`}>Minecraft item tags</a> list, without the `minecraft:` namespace prefix (e.g. `minecraft:wool` to `wool`).
+[^block-tag]: Block tag names correspond to the <a href={`${externalDocs.minecraftWiki}/Block_tag_(Java_Edition)`}>Minecraft block tags</a> list, without the `minecraft:` namespace prefix (e.g. `minecraft:beds` to `beds`).
