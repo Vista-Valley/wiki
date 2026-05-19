@@ -42,25 +42,6 @@ All commands are run from the root of the project, from a terminal:
 | `bun run astro ...`                   | Run CLI commands like `astro add`, `astro check` |
 | `bun run astro -- --help`             | Get help using the Astro CLI                     |
 
-## Wiki chatbot widget
-
-The floating wiki chatbot launcher is loaded from:
-
-- `public/vista-chatbot-widget.js`
-- `src/styles/custom.css`
-- script injection in `astro.config.mjs`
-
-API endpoint config:
-
-- Default: same-origin `POST /api/chat` (`data-api-url` in `astro.config.mjs`)
-- For external API host, set full URL in `data-api-url`
-
-Local dev note:
-
-- If the site runs on `localhost`/`127.0.0.1` and `data-api-url` is a relative path like `/api/chat`,
-  the widget automatically tries `http://127.0.0.1:8787/api/chat` and `http://localhost:8787/api/chat`.
-- For cross-origin local API, allow CORS from your wiki dev host (usually `http://localhost:4321` and `http://127.0.0.1:4321`).
-
 ## 👀 Want to learn more?
 
 Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
