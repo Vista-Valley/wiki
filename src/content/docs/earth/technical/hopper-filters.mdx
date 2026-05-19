@@ -1,6 +1,6 @@
 ---
-title: Hopplet
-description: How to use Hopplet to create smart hopper filters and build efficient sorting systems without complex redstone.
+title: Hopper Filters
+description: How to use Hopper Filters to create smart hopper networks and build efficient sorting systems without complex redstone.
 ---
 
 export const externalDocs = {
@@ -9,27 +9,29 @@ export const externalDocs = {
 }
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-[**Hopplet**](https://modrinth.com/plugin/hopplet) is a server plugin that lets you assign text-based filters to hoppers. Instead of building complex redstone sorting machines with dozens of hoppers and item locks, you simply write a filter expression directly on the hopper and it will only accept items that match.
+:::note[Star Requirement]
+Player must be at least [**7** 🌟](/earth/gameplay/stars/#star-7) to access this feature.
+:::
+
+**Hopper Filters** let you assign text-based filters directly onto standard hoppers. Instead of building complex redstone sorting machines with dozens of hoppers and item locks, you simply write a filter expression right on the hopper and it will only accept items that match.
+
+:::note[Why We Use Hopper Filters]
+Traditional item sorters require large chains of hoppers, each pre-filled with a lock item and wired to comparators. This burns through server resources. Hopper Filters remove the need for all of that. A single hopper with a filter expression can sort virtually any item, cutting entity counts and redstone ticks significantly.
+:::
 
 :::caution[Hopper Minecarts]
-Hopplet filtering is **disabled for hopper minecarts** on this server. Hopper minecarts tend to cause server lag, so their use is discouraged. Filters only work on placed hoppers.
+Filtering is disabled for hopper minecarts on this server. Hopper minecarts tend to cause server lag, so their use is discouraged. Filters only work on placed hoppers.
 :::
-
-:::note[Why We Use Hopplet]
-Traditional item sorters require large chains of hoppers, each pre-filled with a lock item and wired to comparators. This burns through server resources. Hopplet removes the need for all of that. A single hopper with a filter expression can sort virtually any item, cutting entity counts and redstone ticks significantly.
-:::
-
----
 
 ## Creating a Filter
 
-Filters are managed through Hopplet's built-in **dialog interface**. Anvils cannot be used to apply filters; Hopplet maintains a deliberate distinction between normally named hoppers and filtered ones so that players who are unaware of Hopplet can still name their hoppers freely.
+Filters are managed through a built-in **dialog interface**. Anvils cannot be used to apply filters; we maintain a deliberate distinction between normally named hoppers and filtered ones so that players can still name their hoppers freely without breaking system logic.
 
 ### Opening the Dialog
 
 1. Make sure your main hand is **empty** (no item held).
 2. **Sneak + right-click** a hopper as if you were going to open its inventory.
-3. If you have permission to edit the hopper, the Hopplet filter dialog will open.
+3. If you have permission to edit the hopper, the filter dialog will open.
 
 From the dialog you can type a filter expression into the **"Filter Input"** box, press the **"Validate"** button to check your syntax, and finally press **"Confirm"** to save it.
 
@@ -37,9 +39,7 @@ From the dialog you can type a filter expression into the **"Filter Input"** box
 If validation fails, the dialog highlights the error in red. Read the message carefully, as it usually pinpoints the exact character that is wrong (e.g., a missing closing `"`).
 :::
 
-A hopper that has been given a filter through Hopplet will display its name in **gold** in-game to distinguish it from a plain renamed hopper.
-
----
+A hopper that has been given a filter will display its name in **gold** in-game to distinguish it from a plain renamed hopper.
 
 ## Filter Syntax
 
@@ -50,7 +50,6 @@ A filter is a logical expression. Each part is a **function call** that evaluate
 | Token | Meaning | Example |
 | :---- | :------ | :------ |
 | `function(args)` | Evaluates a condition | `type(diamond)` |
-| `plugin:function(args)` | Evaluates a condition from a specific plugin namespace | `hopplet:name("Secret Item")` |
 | `&` | Both sides must be true (AND) | `type(diamond_sword) & enchanted()` |
 | `\|` | Either side must be true (OR) | `type(gold_ingot) \| thrower(Steve)` |
 | `!` | Negates the following expression (NOT) | `!enchanted()` |
@@ -71,8 +70,6 @@ Some function arguments accept comparators to specify ranges.
 | `<=` | Less than or equal to |
 
 **Example:** `durability(>=75, <=90)` - item must have between 75% and 90% durability remaining.
-
----
 
 ## Functions
 
@@ -176,18 +173,14 @@ Lore is matched against the item's full lore text, with each lore line joined by
 | `thrower_towny_town` | `thrower_town`, `town` | Item was thrown by a member of one of the specified [towns](/earth/towny/towns/creating-a-town/). | `town(Melbourne)` |
 | `thrower_towny_nation` | `thrower_nation`, `nation` | Item was thrown by a member of one of the specified [nations](/earth/towny/nations/creating-a-nation/). | `nation(Australia)` |
 
----
-
 ## How Filtering Works
 
-When an item attempts to enter a hopper, Hopplet processes it in the following order:
+When an item attempts to enter a hopper, the system processes it in the following order:
 
 1. **Item arrives**: Either from an adjacent inventory (another hopper, barrel, etc.) or by being physically dropped on top of the hopper.
-2. **Filter is compiled**: Hopplet reads the filter expression stored on the hopper and compiles it. Compiled filters are cached while the chunk is loaded for performance.
-3. **Applicability check**: If the destination hopper has *no filter*, Hopplet checks surrounding hoppers (below the source inventory, or the one it leads into). If a nearby hopper *does* have a filter that specifically matches this item and still has space, the item is redirected there instead. This prevents un-filtered hoppers from "stealing" items that a filtered hopper further down the chain is waiting for.
+2. **Filter is compiled**: The system reads the filter expression stored on the hopper and compiles it. Compiled filters are cached while the chunk is loaded for performance.
+3. **Applicability check**: If the destination hopper has *no filter*, the system checks surrounding hoppers (below the source inventory, or the one it leads into). If a nearby hopper *does* have a filter that specifically matches this item and still has space, the item is redirected there instead. This prevents un-filtered hoppers from "stealing" items that a filtered hopper further down the chain is waiting for.
 4. **Evaluation**: The item's properties are tested against the filter expression. If the expression evaluates to `true`, the item enters the hopper. If it evaluates to `false`, the item is not accepted.
-
----
 
 ## Example Filters
 
@@ -242,32 +235,33 @@ When an item attempts to enter a hopper, Hopplet processes it in the following o
   </TabItem>
 </Tabs>
 
----
-
 ## Designing a Storage System
 
-A water-stream sorter is the most commonly used and lag-friendly sorting system for Hopplet. Items travel along a water channel and are picked up by hoppers placed beneath it. Since each hopper only needs a filter expression (no lock items, no comparator chains), the overall hopper count remains minimal, which helps keep server performance high.
+A water-stream sorter is the most commonly used and lag-friendly sorting system for Hopper Filters. Items travel along a water channel and are picked up by hoppers placed beneath it. Since each hopper only needs a filter expression (no lock items, no comparator chains), the overall hopper count remains minimal, which helps keep server performance high.
 
 ### Basic Layout
 
 1. **Water channel**: A one-block-wide canal of flowing water, typically 8-16 blocks long. Items thrown or dropped into one end float toward the other.
-2. **Filtered hoppers below the channel**: Place a hopper under each section of the canal, facing into a chest or barrel beside it. Give each hopper a Hopplet filter for the items you want it to collect.
+2. **Filtered hoppers below the channel**: Place a hopper under each section of the canal, facing into a chest or barrel beside it. Give each hopper a filter expression for the items you want it to collect.
 3. **Dump at the end**: Finish the canal with one or more plain (un-filtered) hoppers to catch anything that didn't match an earlier filter. You have two options:
    - **Overflow chest**: Hoppers feed into a chest or barrel for manual cleanup.
    - **Burn pit**: Let leftover items flow off the end of the canal into a lava pit or campfire to destroy them automatically. Useful for junk items (e.g. stone sword, iron chestplate) you never want to keep.
 
 :::note[Tips]
 - **Item despawn**: Items in water streams despawn after a few minutes like any dropped item. For large batch-sorting, feed items in steadily rather than all at once.
-- **One hopper per category**: With Hopplet you only need a single hopper per item type. Keep the channel as short as possible.
+- **One hopper per category**: With Hopper Filters you only need a single hopper per item type. Keep the channel as short as possible.
 - **Filter only the topmost hopper**: If a filtered hopper feeds into a chain of hoppers below it (e.g. hopper - hopper - chest), only the hopper that picks items up from the stream needs a filter. Hoppers further down the chain just pass items along and don't need one.
 - **Vertical chests**: Orient your storage chests to the side of the channel rather than below it so the hoppers can face sideways and leave room for more hoppers along the same row.
 :::
 
-:::tip[Keeping Performance Low]
+:::tip[Keeping Performance Healthy]
 Water-stream sorters use far fewer hoppers and zero redstone compared to traditional lock-item designs. Fewer block entity ticks = less lag. Combine this with the server's existing [Performance Guidelines](/earth/technical/performance-guidelines/) for the best results.
 :::
 
----
+### Credits
+
+Special thanks to [Fruitloopins](https://github.com/jwkerr) for creating the underlying [plugin](https://github.com/jwkerr/Hopplet) that powers Vista Valley's custom Hopper Filters.
+
 [^material]: Material names correspond to <a href={`${externalDocs.paper}/org/bukkit/Material.html`}>Paper's Material</a> enum, lowercased (e.g. `DIAMOND_SWORD` to `diamond_sword`).
 [^rarity]: Item rarities correspond to <a href={`${externalDocs.paper}/org/bukkit/inventory/ItemRarity.html`}>Paper's ItemRarity</a> enum.
 [^enchantment]: Enchantment names correspond to <a href={`${externalDocs.paper}/org/bukkit/enchantments/Enchantment.html`}>Paper's Enchantment</a> class, lowercased (e.g. `SHARPNESS` to `sharpness`).
