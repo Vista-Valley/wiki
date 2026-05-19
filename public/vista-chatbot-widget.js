@@ -20,7 +20,8 @@
   const apiCandidates = buildApiCandidates(cfg.apiUrl, cfg.apiFallbacks);
 
   const sessionKey = "vista-wiki-chat-session-id";
-  let sessionId = localStorage.getItem(sessionKey) || "";
+  const storage = getSessionStorage();
+  let sessionId = storage?.getItem(sessionKey) || "";
   let isBusy = false;
 
   const root = document.createElement("div");
@@ -30,7 +31,7 @@
       <span class="vv-chat-launcher-dot"></span>
       <span class="vv-chat-launcher-label"></span>
     </button>
-    <section id="vv-chat-panel" class="vv-chat-panel" aria-hidden="true">
+    <section id="vv-chat-panel" class="vv-chat-panel" aria-hidden="true" hidden inert>
       <header class="vv-chat-header">
         <div class="vv-chat-title-wrap">
           <p class="vv-chat-kicker">BETA</p>
@@ -40,7 +41,7 @@
       </header>
       <div class="vv-chat-log" role="log" aria-live="polite"></div>
       <form class="vv-chat-form">
-        <input class="vv-chat-input" type="text" maxlength="800" />
+        <input id="vv-chat-input" class="vv-chat-input" type="text" maxlength="800" aria-label="Ask the wiki chatbot a question" />
         <button class="vv-chat-send" type="submit">Send</button>
       </form>
     </section>
@@ -70,6 +71,8 @@
   });
 
   function setOpen(open) {
+    panel.hidden = !open;
+    panel.inert = !open;
     panel.classList.toggle("is-open", open);
     launcher.setAttribute("aria-expanded", String(open));
     panel.setAttribute("aria-hidden", String(!open));
@@ -91,18 +94,14 @@
       });
       if (typeof payload.session_id === "string" && payload.session_id) {
         sessionId = payload.session_id;
-        localStorage.setItem(sessionKey, sessionId);
+        storage?.setItem(sessionKey, sessionId);
       }
 
       waitBubble.remove();
       addMessage("bot", payload.reply || "I do not know from the wiki yet.", payload.sources || [], payload.links || []);
     } catch (error) {
       waitBubble.remove();
-      const msg = [
-        "Chat API unreachable.",
-        "For local dev, set data-api-url to http://127.0.0.1:8787/api/chat",
-        "and run API with --cors-origins \"http://localhost:4321,http://127.0.0.1:4321\".",
-      ].join(" ");
+      const msg = "Chat API unreachable. Check README for widget API URL and CORS setup.";
       addMessage("bot", msg);
       console.error("vista widget send failed:", error);
     } finally {
@@ -124,10 +123,11 @@
       const wrap = document.createElement("div");
       wrap.className = "vv-chat-sources";
       sources.slice(0, 3).forEach((s) => {
-        if (!s || !s.url) return;
+        const safeUrl = safeLinkUrl(s?.url);
+        if (!safeUrl) return;
         const a = document.createElement("a");
         a.className = "vv-chat-source-link";
-        a.href = String(s.url);
+        a.href = safeUrl;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
         a.textContent = s.title || "Open wiki page";
@@ -138,10 +138,11 @@
       const wrap = document.createElement("div");
       wrap.className = "vv-chat-sources";
       links.slice(0, 2).forEach((url) => {
-        if (typeof url !== "string" || !url) return;
+        const safeUrl = safeLinkUrl(url);
+        if (!safeUrl) return;
         const a = document.createElement("a");
         a.className = "vv-chat-source-link";
-        a.href = url;
+        a.href = safeUrl;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
         a.textContent = "Open link";
@@ -170,6 +171,29 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function getSessionStorage() {
+    try {
+      return window.sessionStorage;
+    } catch {
+      return null;
+    }
+  }
+
+  function safeLinkUrl(url) {
+    if (typeof url !== "string") return null;
+    const raw = url.trim();
+    if (!raw) return null;
+    try {
+      const parsed = new URL(raw, window.location.origin);
+      if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+        return null;
+      }
+      return parsed.href;
+    } catch {
+      return null;
+    }
   }
 
   function buildApiCandidates(primary, fallbackList) {
