@@ -58,13 +58,16 @@ We use stacked spawners and stacked mobs to reduce lag. Key points players shoul
 * **Silk Touch** is required to move spawners. Sneaking breaks the whole stack at once (keeps it stacked).
 * Spawners spawn a few mobs per cycle, scale with stack size, and won't run if too many mobs are nearby.
 * Mobs from spawners try to **spawn directly into nearby stacks**.
+  * Spawners won't spawn mobs if there are already `3` or more of the same mobs nearby.
 * Spawner mobs have **greatly limited AI** (no pathfinding/targeting) to cut lag.
 
 ### Stacked Mobs
 
+* Mobs from spawners stack up to `128`.
 * Only **spawner-spawned mobs stack**. Stacks from nearby, respect line of sight, and can merge downward for flying mobs.
 * Stacks aren't all killed at once by default; limited multi-kill exists to speed cleanup.
-* Loot/XP are optimized on very large stacks; transformations (lightning, drowning, etc.) apply to the whole stack.
+* Loot/XP are optimized on very large stacks; gear drops are removed.
+* Transformations (lightning, drowning, etc.), death animations, and corpses are disabled for spawner mobs.
 * AI-disabled mobs stay put and silent but can still be pushed.
 
 ## Redstone Guidelines
