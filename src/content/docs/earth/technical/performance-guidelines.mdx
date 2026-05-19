@@ -78,6 +78,8 @@ To help reduce lag, we have implemented the following redstone guidelines:
 :::note[Redstone Optimization]
 1. We use [Alternate Current](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md)'s redstone implementation on this server, which significantly reduces redstone lag by optimizing power calculations and minimizing block and shape updates. As a side effect of these changes, the block update order of redstone dust networks is predictable and intuitive rather than locational and chaotic.
 2. We've enabled a feature that ensures hoppers no longer ignore containers inside occluding blocks (like a hopper minecart inside a sand block). This helps improve hopper performance by optimizing item insertion checks.
+3. The hopper check interval has been changed to **4** ticks, which reduces the frequency of hopper checks and can help improve performance when many hoppers are present.
+4. Lithium's sleeping block entities feature is enabled, which allows the server to skip ticking block entities that are not actively being interacted with, further improving performance.
 :::
 
 :::danger[Important]
