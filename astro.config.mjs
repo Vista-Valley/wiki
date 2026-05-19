@@ -52,6 +52,16 @@ export default defineConfig({
                         name: 'twitter:card',
                         content: 'summary'
                     }
+                },
+                {
+                    tag: 'script',
+                    attrs: {
+                        src: '/vista-chatbot-widget.js',
+                        defer: true,
+                        'data-api-url': '/api/chat',
+                        'data-widget-title': 'Ask Timber',
+                        'data-launcher-label': 'Wiki Chat',
+                    }
                 }
             ],
             lastUpdated: true,
