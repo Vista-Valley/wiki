@@ -73,6 +73,7 @@ To help reduce lag, we have implemented the following redstone guidelines:
 * Redstone components (e.g., hoppers, pistons, dispensers) are **not limited by chunk** but are still subject to overall server performance optimizations.
 * Players are encouraged to use redstone components responsibly and avoid creating large, complex redstone contraptions that could cause lag.
 * Redstone contraptions that cause significant lag may be subject to removal or modification by server staff.
+* For item sorting or any machine that uses hoppers in large quantities, use **[Hopplet](/earth/technical/hopplet/)** instead of traditional lock-item sorters. Hopplet lets you assign filter expressions directly to hoppers, eliminating the need for large hopper chains, comparator circuits, and item locks that drive up block entity tick counts.
 
 :::note[Redstone Optimization]
 1. We use [Alternate Current](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md)'s redstone implementation on this server, which significantly reduces redstone lag by optimizing power calculations and minimizing block and shape updates. As a side effect of these changes, the block update order of redstone dust networks is predictable and intuitive rather than locational and chaotic.
