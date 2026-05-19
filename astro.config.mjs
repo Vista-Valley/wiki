@@ -116,7 +116,6 @@ export default defineConfig({
                                 items: [
                                     { label: 'Overview', link: 'earth/towny' },
                                     { label: 'Commands', link: 'earth/towny/commands' },
-                                    { label: 'Chat Channels', link: 'earth/towny/chat-channels' },
                                     { label: 'Towns', items: [{ autogenerate: { directory: 'earth/towny/towns', collapsed: true } }] },
                                     { label: 'Nations', items: [{ autogenerate: { directory: 'earth/towny/nations', collapsed: true } }] },
                                 ]
